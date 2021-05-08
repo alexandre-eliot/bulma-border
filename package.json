@@ -1,7 +1,7 @@
 {
   "name": "bulma-border",
-  "version": "1.0.0",
-  "description": "A simple addition to Bulma for border handling",
+  "version": "1.0.1",
+  "description": "A simple addition to Bulma for border styling",
   "main": "./css/bulma-border.min.css",
   "unpkg": "./css/bulma-border.min.css",
   "jsdelivr": "./css/bulma-border.min.css",
@@ -63,5 +63,13 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@alexandre-eliot"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "browserslist": [
+    "defaults",
+    "not ie < 11",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ]
 }
