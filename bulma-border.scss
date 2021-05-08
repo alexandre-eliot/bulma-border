@@ -1,0 +1,121 @@
+@import 'node_modules/bulma/sass/utilities/derived-variables.sass';
+
+// variables
+
+$size-8: 0.5rem !default;
+$size-9: 0.25rem !default;
+$size-10: 0.125rem !default;
+
+$directions: (
+  left: 'x',
+  right: 'x',
+  top: 'y',
+  bottom: 'y',
+);
+
+$border-sizes: join($sizes, ($size-8 $size-9 $size-10));
+
+$border-styles: (solid, dotted, dashed, double, groove, ridge, inset, outset);
+
+$def-border-width: nth($border-sizes, 10);
+$def-border-color: $primary;
+$def-border-style: nth($border-styles, 1);
+
+// functions
+
+@mixin border($direction, $width, $style, $color) {
+  border-#{$direction}-width: $width;
+  border-#{$direction}-style: $style;
+  border-#{$direction}-color: $color;
+}
+
+// class definition
+
+.has-border {
+  @each $direction, $axis in $directions {
+    &,
+    &-#{$axis},
+    &-#{$direction} {
+      @include border(
+        $direction,
+        $def-border-width,
+        $def-border-style,
+        $def-border-color
+      );
+
+      @each $color, $color-variants in $colors {
+        $border-color: nth($color-variants, 1);
+
+        &-#{$color} {
+          @include border(
+            $direction,
+            $def-border-width,
+            $def-border-style,
+            $border-color
+          );
+
+          @each $border-style in $border-styles {
+            &-#{$border-style} {
+              @include border(
+                $direction,
+                $def-border-width,
+                $border-style,
+                $border-color
+              );
+
+              @for $index-size from 1 through length($border-sizes) {
+                $border-width: nth($border-sizes, $index-size);
+
+                &-#{$index-size} {
+                  @include border(
+                    $direction,
+                    $border-width,
+                    $border-style,
+                    $border-color
+                  );
+                }
+              }
+            }
+          }
+
+          @for $index-size from 1 through length($border-sizes) {
+            $border-width: nth($border-sizes, $index-size);
+
+            &-#{$index-size} {
+              @include border(
+                $direction,
+                $border-width,
+                $def-border-style,
+                $border-color
+              );
+            }
+          }
+        }
+      }
+
+      @each $border-style in $border-styles {
+        &-#{$border-style} {
+          @include border(
+            $direction,
+            $def-border-width,
+            $border-style,
+            $def-border-color
+          );
+        }
+      }
+
+      @for $index-size from 1 through length($border-sizes) {
+        $border-width: nth($border-sizes, $index-size);
+
+        &-#{$index-size} {
+          @include border(
+            $direction,
+            $border-width,
+            $def-border-style,
+            $def-border-color
+          );
+        }
+      }
+    }
+  }
+}
