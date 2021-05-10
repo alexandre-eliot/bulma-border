@@ -20,7 +20,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format && git add --all"
+      "pre-commit": "npm run format && git add --all && npm run lint && npm run format",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "repository": {
@@ -50,9 +51,12 @@
   },
   "homepage": "https://github.com/alexandre-eliot/bulma-border#readme",
   "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "autoprefixer": "^9.8.6",
     "bulma": "^0.9.2",
     "clean-css-cli": "^4.3.0",
+    "commitlint-config-gitmoji": "^2.2.5",
     "husky": "^6.0.0",
     "node-sass": "^4.14.1",
     "postcss": "^8.2.14",
