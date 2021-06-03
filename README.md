@@ -69,21 +69,21 @@ i.e. `.has-border-right` and `.has-border-black-6` are both valid
 * `x` *that includes* `left` and `right`
 * `y` *that includes* `top`, `bottom`
 
-`default` : all directions
+default: *all directions*
 
 #### Colors
 
 Bulma's original colors palette such as :
 `white`, `black`, `light`, `dark`, `primary`, `link`, `info`, `success`, `warning` and `danger`
 
-`default` : `primary`
+default: `primary`
 
 #### Styles
 
 Common css styling values :
 `solid`, `dotted`, `dashed`, `double`, `groove`, `ridge`, `inset` and `outset`
 
-`default` : `solid`
+default: `solid`
 
 #### Sizes
 
